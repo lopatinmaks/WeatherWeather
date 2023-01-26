@@ -16,6 +16,11 @@
 		77BACDB6297FD53E00AA63F5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 77BACDB5297FD53E00AA63F5 /* .gitignore */; };
 		77BACDD8297FF2A800AA63F5 /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDD7297FF2A800AA63F5 /* HelloViewController.swift */; };
 		77BACDDA297FF94400AA63F5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDD9297FF94400AA63F5 /* TableViewController.swift */; };
+		77BACDE0298121A400AA63F5 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDDF298121A400AA63F5 /* CitiesViewController.swift */; };
+		77BACDE229812FB300AA63F5 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDE129812FB300AA63F5 /* CityCell.swift */; };
+		77BACDE42981432300AA63F5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDE32981432300AA63F5 /* WeatherViewController.swift */; };
+		77BACDE62981440400AA63F5 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDE52981440400AA63F5 /* WeatherData.swift */; };
+		77BACDE8298145F700AA63F5 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDE7298145F700AA63F5 /* WeatherCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		77BACDB5297FD53E00AA63F5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		77BACDD7297FF2A800AA63F5 /* HelloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
 		77BACDD9297FF94400AA63F5 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		77BACDDF298121A400AA63F5 /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
+		77BACDE129812FB300AA63F5 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		77BACDE32981432300AA63F5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		77BACDE52981440400AA63F5 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		77BACDE7298145F700AA63F5 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,11 @@
 				77BACDA3297FD50D00AA63F5 /* SceneDelegate.swift */,
 				77BACDA5297FD50D00AA63F5 /* LoginViewController.swift */,
 				77BACDA7297FD50D00AA63F5 /* Main.storyboard */,
+				77BACDE7298145F700AA63F5 /* WeatherCell.swift */,
+				77BACDE32981432300AA63F5 /* WeatherViewController.swift */,
+				77BACDE52981440400AA63F5 /* WeatherData.swift */,
+				77BACDDF298121A400AA63F5 /* CitiesViewController.swift */,
+				77BACDE129812FB300AA63F5 /* CityCell.swift */,
 				77BACDD7297FF2A800AA63F5 /* HelloViewController.swift */,
 				77BACDD9297FF94400AA63F5 /* TableViewController.swift */,
 				77BACDAA297FD51200AA63F5 /* Assets.xcassets */,
@@ -150,8 +165,13 @@
 			files = (
 				77BACDA6297FD50D00AA63F5 /* LoginViewController.swift in Sources */,
 				77BACDA2297FD50D00AA63F5 /* AppDelegate.swift in Sources */,
+				77BACDE8298145F700AA63F5 /* WeatherCell.swift in Sources */,
 				77BACDA4297FD50D00AA63F5 /* SceneDelegate.swift in Sources */,
+				77BACDE0298121A400AA63F5 /* CitiesViewController.swift in Sources */,
 				77BACDDA297FF94400AA63F5 /* TableViewController.swift in Sources */,
+				77BACDE42981432300AA63F5 /* WeatherViewController.swift in Sources */,
+				77BACDE229812FB300AA63F5 /* CityCell.swift in Sources */,
+				77BACDE62981440400AA63F5 /* WeatherData.swift in Sources */,
 				77BACDD8297FF2A800AA63F5 /* HelloViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
