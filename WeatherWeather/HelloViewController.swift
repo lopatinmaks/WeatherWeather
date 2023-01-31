@@ -10,9 +10,13 @@ import UIKit
 final class HelloViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet private var centerText: UILabel!
+    @IBOutlet private var testView: TestView!
+    @IBOutlet private var imageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        testView.configure()
     }
     //MARK: - @BActions
     @IBAction func addWord(_ sender: UIBarButtonItem) {

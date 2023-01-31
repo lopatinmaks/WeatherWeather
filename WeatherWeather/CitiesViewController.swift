@@ -64,6 +64,17 @@ final class CitiesViewController: UIViewController {
         cities.insert(name, at: 0)
         tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "weatherSegue",
+            let cell = sender as? CityCell,
+           let destinayion = segue.destination as? WeatherViewController {
+            
+            destinayion.name = cell.titleLabel.text
+        }
+    }
 }
 //MARK: - UITableViewDataSource
 extension CitiesViewController: UITableViewDataSource {
