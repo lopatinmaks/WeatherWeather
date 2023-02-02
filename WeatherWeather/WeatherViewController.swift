@@ -10,6 +10,9 @@ import UIKit
 final class WeatherViewController: UIViewController {
 //MARK: - IBOutlet
     @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var name: String?
     
     private var weather = [
         WeatherData(temperature: 30, humidity: 0.2),
@@ -32,10 +35,19 @@ final class WeatherViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        titleLabel.text = name
+        
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             
         layout.itemSize = CGSize(width: 100, height: 100)
         }
+    }
+    
+    @IBAction func selectedDayUpdate(_ sender: Any) {
+        weather = (0...20).map { _ in
+            WeatherData(temperature: Int.random(in: -10...10), humidity: Double.random(in: 0.0...1.0))
+        }
+        collectionView.reloadData()
     }
 }
 //MARK: - UICollectionViewDataSource
