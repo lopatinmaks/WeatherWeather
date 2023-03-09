@@ -9,7 +9,7 @@ import UIKit
 
 final class WeatherCell: UICollectionViewCell {
     //MARK: - IBOutlets
-    @IBOutlet private var weatherIcon: UIImageView!
+    @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet private var backView: UIView!
