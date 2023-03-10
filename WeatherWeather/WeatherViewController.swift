@@ -7,14 +7,22 @@
 
 import UIKit
 
+protocol WeatherViewControllerDelegate: class {
+    func updateCity( oldNmae: String, newName: String )
+}
+
 final class WeatherViewController: UIViewController {
 //MARK: - IBOutlet
     @IBOutlet private var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
     
+    weak var delegate: WeatherViewControllerDelegate?
+    
+    var iconImage: UIImage?
     var name: String?
     
-    private var weather = [
+    var weather = [
         WeatherData(temperature: 30, humidity: 0.2),
         WeatherData(temperature: 32, humidity: 0.3),
         WeatherData(temperature: 12, humidity: 0.4),
@@ -36,6 +44,7 @@ final class WeatherViewController: UIViewController {
         collectionView.delegate = self
         
         titleLabel.text = name
+        nameField.text = name
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             
@@ -48,6 +57,13 @@ final class WeatherViewController: UIViewController {
             WeatherData(temperature: Int.random(in: -10...10), humidity: Double.random(in: 0.0...1.0))
         }
         collectionView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        guard let name = name else { return }
+        delegate?.updateCity(oldNmae: name, newName: nameField.text ?? name)
     }
 }
 //MARK: - UICollectionViewDataSource
@@ -65,6 +81,7 @@ extension WeatherViewController: UICollectionViewDataSource {
         
         cell.temperature.text = String(data.temperature)
         cell.humidity.text = String(data.humidity)
+        cell.weatherIcon.image = iconImage
         
         return cell
     }

@@ -2,58 +2,59 @@
 //  GradientView.swift
 //  WeatherWeather
 //
-//  Created by Ольга on 31.01.2023.
+//  Created by Ольга on 09.03.2023.
 //
 
 import UIKit
 
-@IBDesignable final class GradientView: UIView {
-    
+@IBDesignable class GradientView: UIView {
+
     override class var layerClass: AnyClass {
         return CAGradientLayer.self
     }
     
-    private var gradientLayer: CAGradientLayer {
+    var gradientLayer: CAGradientLayer {
         return layer as! CAGradientLayer
     }
     
-    @IBInspectable private var startColor: UIColor = .white {
+    @IBInspectable var startColor: UIColor = .white {
         didSet {
             updateColors()
         }
     }
     
-    @IBInspectable private var endColor: UIColor = .black {
+    @IBInspectable var endColor: UIColor = .black {
         didSet {
             updateColors()
         }
     }
     
-    @IBInspectable private var startLocation: CGFloat = 0.0 {
+    @IBInspectable var startLocation: CGFloat = 0 {
         didSet {
             updateLocations()
         }
     }
     
-    @IBInspectable private var endLocation: CGFloat = 1.0 {
+    @IBInspectable var endLocation: CGFloat = 1 {
         didSet {
             updateLocations()
         }
     }
     
-    @IBInspectable private var startPoint: CGPoint = .zero {
+    @IBInspectable var startPoint: CGPoint = .zero {
         didSet {
             updateStartPoint()
         }
     }
     
-    @IBInspectable private var endPoint: CGPoint = .init(x: 0.0, y: 1.0) {
+    @IBInspectable var endPoint: CGPoint = .init(x: 0, y: 1) {
         didSet {
             updateEndPoint()
         }
     }
     
     private func updateColors() {
+        
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
     }
     
@@ -65,7 +66,7 @@ import UIKit
         gradientLayer.endPoint = endPoint
     }
     
-    private func updateLocations() {
+    func updateLocations() {
         gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
     }
 }

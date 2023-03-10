@@ -38,6 +38,12 @@ final class CitiesViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.register(CityCell.self, forCellReuseIdentifier: "cityCell")
+    }
+    
+    @IBAction func editTapped(_ sender: Any) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
     }
  
     //MARK: - IBAction
@@ -69,10 +75,11 @@ final class CitiesViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         if segue.identifier == "weatherSegue",
-            let cell = sender as? CityCell,
-           let destinayion = segue.destination as? WeatherViewController {
+           let cell = sender as? CityCell,
+           let destiantion = segue.destination as? WeatherViewController {
             
-            destinayion.name = cell.titleLabel.text
+            destiantion.iconImage = cell.imageView?.image
+            destiantion.name = cell.textLabel?.text
         }
     }
 }
@@ -86,8 +93,10 @@ extension CitiesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityCell else { fatalError() }
-
-        cell.titleLabel.text = cities[indexPath.row]
+        
+        cell.imageView?.image = UIImage(named: "images")
+        cell.textLabel?.text = cities[indexPath.row]
+        cell.detailTextLabel?.text = "город"
         
         return cell
     }
@@ -101,4 +110,28 @@ extension CitiesViewController: UITableViewDataSource {
     }
 }
 //MARK: - UITableViewDelegate
-extension CitiesViewController: UITableViewDelegate {}
+extension CitiesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "weatherVC") as? WeatherViewController else { return }
+        let index = indexPath.row
+        let cityName = cities[index]
+        
+        vc.iconImage = UIImage(named: "images")
+        vc.name = cityName
+        vc.delegate = self
+        vc.weather = (0...50).map { _ in
+            WeatherData(temperature: Int.random(in: 0...30), humidity: Double.random(in: 0.0...1.0))
+            
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension CitiesViewController: WeatherViewControllerDelegate {
+    func updateCity(oldNmae: String, newName: String) {
+        if let index = cities.firstIndex(of: oldNmae) {
+            cities[index] = newName
+            tableView.reloadData()
+        }
+    }
+}
