@@ -17,7 +17,7 @@ final class WeatherCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backView.layer.cornerRadius = 10
+        backView.layer.cornerRadius = 128 / 2
         backView.layer.borderColor = UIColor.black.cgColor
         backView.layer.borderWidth = 3
     }
