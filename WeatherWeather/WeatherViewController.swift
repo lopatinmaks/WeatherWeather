@@ -81,7 +81,6 @@ extension WeatherViewController: UICollectionViewDataSource {
         
         cell.temperature.text = String(data.temperature)
         cell.humidity.text = String(data.humidity)
-        cell.weatherIcon.image = iconImage
         
         return cell
     }
