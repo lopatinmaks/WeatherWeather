@@ -12,6 +12,7 @@ final class LoginViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var loginTextField: UITextField!
+    @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet private var passwordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -24,6 +25,48 @@ final class LoginViewController: UIViewController {
         print("Login VC did appear")
     }
     
+    func animateLogin() {
+        let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeInAnimation.fromValue = 0
+        fadeInAnimation.toValue = 1
+        fadeInAnimation.duration = 2.0
+        fadeInAnimation.beginTime = CACurrentMediaTime() + 1
+        fadeInAnimation.fillMode = .backwards
+        
+        loginLabel.layer.add(fadeInAnimation, forKey: nil)
+    }
+    
+    func animatedPasswordField() {
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.fromValue = 0
+        scaleAnimation.toValue = 1
+        scaleAnimation.duration = 2.0
+        scaleAnimation.beginTime = CACurrentMediaTime() + 1
+        scaleAnimation.fillMode = .backwards
+        
+        passwordTextField.layer.add(scaleAnimation, forKey: nil)
+    }
+    
+    func animateLoginField() {
+        self.loginTextField.transform = CGAffineTransform(translationX: -500, y: 0)
+        UIView.animate(withDuration: 1.0) {
+            self.loginTextField.transform = .identity
+        }
+    }
+    
+    func animateWrongPassword() {
+        UIView.animate(withDuration: 0.6, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.1, options: [.autoreverse]) {
+            self.passwordTextField.frame.origin.x += 1
+            self.passwordTextField.frame.origin.y += 1
+        } completion: { (result) in
+            self.passwordTextField.layer.borderColor = UIColor.red.cgColor
+            self.passwordTextField.layer.borderWidth = 1.0
+            self.passwordTextField.frame.origin.x -= 1
+            self.passwordTextField.frame.origin.y -= 1
+        }
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("Login will appear")
@@ -34,6 +77,10 @@ final class LoginViewController: UIViewController {
             
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(tapGesture)
+        
+        animateLogin()
+        animateLoginField()
+        animatedPasswordField()
     }
         
     @objc private func keyboardWillShown(notification: Notification) {
@@ -95,11 +142,12 @@ final class LoginViewController: UIViewController {
     }
     
     private func showLoginError() {
-        let alert = UIAlertController(title: "Ошибка", message: "Логин и/или пароль не верны!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        
-        alert.addAction(action)
-        present(alert, animated: true)
+        animateWrongPassword()
+//        let alert = UIAlertController(title: "Ошибка", message: "Логин и/или пароль не верны!", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "OK", style: .default)
+//
+//        alert.addAction(action)
+//        present(alert, animated: true)
     }
     
     @IBAction func liginTapped(_ sender: UIButton) {
