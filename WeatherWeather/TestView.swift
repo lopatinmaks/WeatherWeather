@@ -8,56 +8,59 @@
 import UIKit
 
 @IBDesignable final class TestView: UIView {
-    
-    @IBInspectable private var radius: CGFloat = 10 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable private var color: UIColor = .red {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable private var diameter: CGFloat {
-        radius * 2
-    }
-    
-    override class var layerClass:AnyClass {
+    override class var layerClass: AnyClass {
         return CAShapeLayer.self
     }
     
+    private let first = CAShapeLayer()
+    private let second = CAShapeLayer()
+    
+    var shapeLayer: CAShapeLayer {
+        return(layer as! CAShapeLayer)
+    }
+    
     func configure() {
-//       let gradienLayer = CAGradientLayer()
-//
-//        gradienLayer.colors = [UIColor.blue.cgColor, UIColor.purple.cgColor]
-//        gradienLayer.locations = [NSNumber(value: 0), NSNumber(value: 1)]
-//        gradienLayer.startPoint = CGPoint.zero
-//        gradienLayer.endPoint = CGPoint(x: 0, y: 1)
-//
-//        layer.addSublayer(gradienLayer)
-//        gradienLayer.frame = bounds
+        first.backgroundColor = UIColor.black.cgColor
+        second.backgroundColor = UIColor.black.cgColor
         
-        transform = CGAffineTransform(rotationAngle: .pi / 4).concatenating(CGAffineTransform(scaleX: 0.3, y: 0.3))
-         
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+        first.frame = CGRect(x: 100, y: 100, width: 4, height: 4)
+        second.frame = CGRect(x: 100, y: 100, width: 4, height: 4)
         
-        addGestureRecognizer(recognizer)
+        first.masksToBounds = true
+        second.masksToBounds = true
+        
+        first.cornerRadius = 2
+        second.cornerRadius = 2
+        
+        layer.addSublayer(first)
+        layer.addSublayer(second)
     }
     
-    @objc private func onTap(_ sender: UITapGestureRecognizer) {
-        radius = CGFloat.random(in: 0.0...50.0)
-        setNeedsDisplay()
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    func animate() {
+        let scaleAnimation = CABasicAnimation(keyPath: "bounds.size.width")
+        scaleAnimation.byValue = 16
+        scaleAnimation.duration = 1
+        scaleAnimation.fillMode = .forwards
+        scaleAnimation.isRemovedOnCompletion = false
         
-        guard let context = UIGraphicsGetCurrentContext() else { return }
+        let rotationLeft = CABasicAnimation(keyPath: "transform.rotation")
+        rotationLeft.byValue = CGFloat.pi/4
+        rotationLeft.duration = 1
+        rotationLeft.beginTime = CACurrentMediaTime() + 1
+        rotationLeft.fillMode = .both
+        rotationLeft.isRemovedOnCompletion = false
         
-        context.setFillColor(UIColor.red.cgColor)
-        context.fill(CGRect(x: rect.midX - radius, y: rect.midY - radius, width: diameter, height: diameter))
+        let rotationRight = CABasicAnimation(keyPath: "transform.rotation")
+        rotationRight.byValue = -(CGFloat.pi/4)
+        rotationRight.duration = 1
+        rotationRight.beginTime = CACurrentMediaTime() + 1
+        rotationRight.fillMode = .both
+        rotationRight.isRemovedOnCompletion = false
+        
+        first.add(scaleAnimation, forKey: nil)
+        first.add(rotationLeft, forKey: nil)
+        
+        second.add(scaleAnimation, forKey: nil)
+        second.add(rotationRight, forKey: nil)
     }
 }
