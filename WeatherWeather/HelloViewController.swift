@@ -78,9 +78,4 @@ final class HelloViewController: UIViewController {
         }
         animator.startAnimation()
     }
-        
-    override func viewDidDisappear(_ animated: Bool) {
-            super.viewDidDisappear(animated)
-            print(#function)
-        }
 }
