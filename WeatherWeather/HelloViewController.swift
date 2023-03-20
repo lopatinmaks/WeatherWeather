@@ -15,7 +15,7 @@ final class HelloViewController: UIViewController {
     
     var label = UILabel()
     var box: UIView = UIView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -32,11 +32,13 @@ final class HelloViewController: UIViewController {
     
     private func addBox() {
         box.frame = CGRect(x: (Int(view.frame.width) - 50) / 2, y: Int(view.frame.height) - 200, width: 50, height: 50)
-        box.backgroundColor = .blue
+        box.backgroundColor = .white
         
         view.addSubview(box)
         
-         
+        box.isUserInteractionEnabled = true
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onPan(_ :)))
+        box.addGestureRecognizer(panGesture)
     }
     
     //MARK: - @BActions
@@ -47,18 +49,33 @@ final class HelloViewController: UIViewController {
     
     private let colors: [UIColor] = [.red, .blue, .black, .orange, .green]
     
-    @IBAction func animate(_ sender: Any) {
-        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.7) {
-            self.box.frame.origin.x += 50
-        } completion: { (result) in
-            
+    private var animator: UIViewPropertyAnimator?
+    
+    @objc func onPan(_ recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut) {
+                self.box.transform = .init(translationX: 0, y: 100)
+            }
+            animator?.pauseAnimation()
+        case .changed:
+            let translation = recognizer.translation(in: view)
+            animator?.fractionComplete = translation.y / 100
+        case .ended:
+            animator?.stopAnimation(true)
+            animator?.addAnimations {
+                self.box.transform = .identity
+            }
+            animator?.startAnimation()
+        default:
+            return
         }
-
-        
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(#function)
+    @IBAction func animate(_ sender: Any) {
+        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .linear) {
+            self.box.frame = self.box.frame.offsetBy(dx: 0, dy: -100)
+        }
+        animator.startAnimation()
     }
 }
