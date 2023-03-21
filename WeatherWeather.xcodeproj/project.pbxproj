@@ -12,6 +12,9 @@
 		7765570C29BB3ECD0011B080 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765570B29BB3ECD0011B080 /* SectionHeaderView.swift */; };
 		7765570E29BB3EE10011B080 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7765570D29BB3EE10011B080 /* SectionHeaderView.xib */; };
 		7765571029BB53560011B080 /* WeatherLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765570F29BB53560011B080 /* WeatherLayout.swift */; };
+		77932FD229C9C53D00F1A102 /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77932FD129C9C53D00F1A102 /* PushAnimator.swift */; };
+		77932FD429C9C74000F1A102 /* Hello2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77932FD329C9C74000F1A102 /* Hello2VC.swift */; };
+		77932FD629C9D4E900F1A102 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77932FD529C9D4E900F1A102 /* CustomSegue.swift */; };
 		77BACDA2297FD50D00AA63F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDA1297FD50D00AA63F5 /* AppDelegate.swift */; };
 		77BACDA4297FD50D00AA63F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDA3297FD50D00AA63F5 /* SceneDelegate.swift */; };
 		77BACDA6297FD50D00AA63F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDA5297FD50D00AA63F5 /* LoginViewController.swift */; };
@@ -36,6 +39,9 @@
 		7765570B29BB3ECD0011B080 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		7765570D29BB3EE10011B080 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		7765570F29BB53560011B080 /* WeatherLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLayout.swift; sourceTree = "<group>"; };
+		77932FD129C9C53D00F1A102 /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
+		77932FD329C9C74000F1A102 /* Hello2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello2VC.swift; sourceTree = "<group>"; };
+		77932FD529C9D4E900F1A102 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		77BACD9E297FD50D00AA63F5 /* WeatherWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BACDA1297FD50D00AA63F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77BACDA3297FD50D00AA63F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +110,9 @@
 				77548827298BCD9D0043805A /* LikeControl.swift */,
 				77BACDE129812FB300AA63F5 /* CityCell.swift */,
 				77BACDD7297FF2A800AA63F5 /* HelloViewController.swift */,
+				77932FD529C9D4E900F1A102 /* CustomSegue.swift */,
+				77932FD329C9C74000F1A102 /* Hello2VC.swift */,
+				77932FD129C9C53D00F1A102 /* PushAnimator.swift */,
 				77BACDD9297FF94400AA63F5 /* TableViewController.swift */,
 				77BACDAA297FD51200AA63F5 /* Assets.xcassets */,
 				77BACDAC297FD51200AA63F5 /* LaunchScreen.storyboard */,
@@ -191,16 +200,19 @@
 				77BACE052989188200AA63F5 /* WeekDayPicker.swift in Sources */,
 				7765570A29B9E35F0011B080 /* GradientView.swift in Sources */,
 				77BACE012987ECDD00AA63F5 /* TestView.swift in Sources */,
+				77932FD629C9D4E900F1A102 /* CustomSegue.swift in Sources */,
 				77BACDE8298145F700AA63F5 /* WeatherCell.swift in Sources */,
 				7765570C29BB3ECD0011B080 /* SectionHeaderView.swift in Sources */,
 				77BACDA4297FD50D00AA63F5 /* SceneDelegate.swift in Sources */,
 				77BACDE0298121A400AA63F5 /* CitiesViewController.swift in Sources */,
+				77932FD429C9C74000F1A102 /* Hello2VC.swift in Sources */,
 				77BACDDA297FF94400AA63F5 /* TableViewController.swift in Sources */,
 				77BACDE42981432300AA63F5 /* WeatherViewController.swift in Sources */,
 				7765571029BB53560011B080 /* WeatherLayout.swift in Sources */,
 				77BACDE229812FB300AA63F5 /* CityCell.swift in Sources */,
 				77BACDE62981440400AA63F5 /* WeatherData.swift in Sources */,
 				77BACDD8297FF2A800AA63F5 /* HelloViewController.swift in Sources */,
+				77932FD229C9C53D00F1A102 /* PushAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hNv-aZ-dxt">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -324,9 +324,9 @@
                                 <rect key="frame" x="120" y="482" width="153" height="21"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Анимировать"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Вперед"/>
                                 <connections>
-                                    <action selector="animate:" destination="hNv-aZ-dxt" eventType="touchUpInside" id="amz-CG-CV5"/>
+                                    <action selector="animate:" destination="hNv-aZ-dxt" eventType="touchUpInside" id="OL0-CB-Pi8"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="images" translatesAutoresizingMaskIntoConstraints="NO" id="fUs-7r-sVZ">
@@ -369,11 +369,51 @@
                         <outlet property="centerText" destination="vmW-Qe-OEz" id="0Gt-xf-JZi"/>
                         <outlet property="imageView" destination="fUs-7r-sVZ" id="bIu-Mm-Nrv"/>
                         <outlet property="topTitleConstraint" destination="pOc-jy-PcL" id="2Fu-m3-Oaj"/>
+                        <segue destination="75Z-xp-fMy" kind="show" identifier="helloVC2" id="vRh-jG-GG4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qe0-MY-YZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2794.6564885496182" y="3.5211267605633805"/>
+        </scene>
+        <!--Hello2VC-->
+        <scene sceneID="xh3-gX-ysX">
+            <objects>
+                <viewController storyboardIdentifier="helloVC2" id="75Z-xp-fMy" customClass="Hello2VC" customModule="WeatherWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ic-ue-Cis">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="images" translatesAutoresizingMaskIntoConstraints="NO" id="hVm-cx-dVW">
+                                <rect key="frame" x="46" y="320" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hVm-cx-dVW" secondAttribute="height" multiplier="1:1" id="tMJ-gp-bQb"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADh-7S-Fsb">
+                                <rect key="frame" x="143" y="662" width="91" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Закрыть"/>
+                                <connections>
+                                    <action selector="onClose:" destination="75Z-xp-fMy" eventType="touchUpInside" id="vOv-qT-zA1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="j14-Cm-9Ki"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hVm-cx-dVW" firstAttribute="top" secondItem="j14-Cm-9Ki" secondAttribute="top" constant="217" id="4vu-kQ-aHk"/>
+                            <constraint firstItem="j14-Cm-9Ki" firstAttribute="trailing" secondItem="ADh-7S-Fsb" secondAttribute="trailing" constant="159" id="H2J-OW-odm"/>
+                            <constraint firstItem="hVm-cx-dVW" firstAttribute="leading" secondItem="j14-Cm-9Ki" secondAttribute="leading" constant="46" id="IzD-fU-nCW"/>
+                            <constraint firstItem="j14-Cm-9Ki" firstAttribute="trailing" secondItem="hVm-cx-dVW" secondAttribute="trailing" constant="47" id="NhJ-nA-5CF"/>
+                            <constraint firstItem="ADh-7S-Fsb" firstAttribute="top" secondItem="hVm-cx-dVW" secondAttribute="bottom" constant="42" id="SJu-M2-IKn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="XkD-yK-Rux"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gva-PI-148" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3547" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O8A-91-mBe">
