@@ -16,6 +16,8 @@ final class HelloViewController: UIViewController {
     var label = UILabel()
     var box: UIView = UIView()
     
+    let interactiveTransition = InteractiveTransition()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,18 +29,6 @@ final class HelloViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addBox()
-    }
-    
-    private func addBox() {
-        box.frame = CGRect(x: (Int(view.frame.width) - 50) / 2, y: Int(view.frame.height) - 200, width: 50, height: 50)
-        box.backgroundColor = .white
-        
-        view.addSubview(box)
-        
-        box.isUserInteractionEnabled = true
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onPan(_ :)))
-        box.addGestureRecognizer(panGesture)
     }
     
     //MARK: - @BActions
@@ -47,35 +37,39 @@ final class HelloViewController: UIViewController {
         centerText.text = (centerText.text ?? "") + " hello"
     }
     
-    private let colors: [UIColor] = [.red, .blue, .black, .orange, .green]
-    
-    private var animator: UIViewPropertyAnimator?
-    
-    @objc func onPan(_ recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut) {
-                self.box.transform = .init(translationX: 0, y: 100)
-            }
-            animator?.pauseAnimation()
-        case .changed:
-            let translation = recognizer.translation(in: view)
-            animator?.fractionComplete = translation.y / 100
-        case .ended:
-            animator?.stopAnimation(true)
-            animator?.addAnimations {
-                self.box.transform = .identity
-            }
-            animator?.startAnimation()
-        default:
-            return
+    @IBAction func animate(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "helloVC2") else { return }
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+       present(vc, animated: true)
+    }
+}
+
+extension HelloViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+            return PushAnimator()
         }
     }
     
-    @IBAction func animate(_ sender: Any) {
-        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .linear) {
-            self.box.frame = self.box.frame.offsetBy(dx: 0, dy: -100)
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PopAnimator()
+    }
+
+
+extension HelloViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .pop {
+            if navigationController.viewControllers.first != toVC {
+                interactiveTransition.viewController = toVC
+            }
+            return PopAnimator()
+        } else {
+            interactiveTransition.viewController = toVC
+            return PushAnimator()
         }
-        animator.startAnimation()
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactiveTransition.hasStarted ? interactiveTransition : nil
     }
 }
