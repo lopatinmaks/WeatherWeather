@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Session: CustomStringConvertible {
+final class Session: CustomStringConvertible {
     static let shared = Session()
     private init() {}
     
