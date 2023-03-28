@@ -13,6 +13,8 @@
 		7765570C29BB3ECD0011B080 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765570B29BB3ECD0011B080 /* SectionHeaderView.swift */; };
 		7765570E29BB3EE10011B080 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7765570D29BB3EE10011B080 /* SectionHeaderView.xib */; };
 		7765571029BB53560011B080 /* WeatherLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765570F29BB53560011B080 /* WeatherLayout.swift */; };
+		7782D29429D2CEC0001EE5C1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7782D29329D2CEC0001EE5C1 /* Alamofire */; };
+		7782D29729D2D3FE001EE5C1 /* WeatherAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7782D29629D2D3FE001EE5C1 /* WeatherAPIServices.swift */; };
 		77932FD229C9C53D00F1A102 /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77932FD129C9C53D00F1A102 /* PushAnimator.swift */; };
 		77932FD429C9C74000F1A102 /* Hello2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77932FD329C9C74000F1A102 /* Hello2VC.swift */; };
 		77932FD629C9D4E900F1A102 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77932FD529C9D4E900F1A102 /* CustomSegue.swift */; };
@@ -30,7 +32,7 @@
 		77BACDE42981432300AA63F5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDE32981432300AA63F5 /* WeatherViewController.swift */; };
 		77BACDE62981440400AA63F5 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDE52981440400AA63F5 /* WeatherData.swift */; };
 		77BACDE8298145F700AA63F5 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACDE7298145F700AA63F5 /* WeatherCell.swift */; };
-		77BACE012987ECDD00AA63F5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACE002987ECDD00AA63F5 /* TestView.swift */; };
+		77BACE012987ECDD00AA63F5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACE002987ECDD00AA63F5 /* TestViewController.swift */; };
 		77BACE052989188200AA63F5 /* WeekDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BACE042989188200AA63F5 /* WeekDayPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,7 @@
 		7765570B29BB3ECD0011B080 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		7765570D29BB3EE10011B080 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		7765570F29BB53560011B080 /* WeatherLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLayout.swift; sourceTree = "<group>"; };
+		7782D29629D2D3FE001EE5C1 /* WeatherAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIServices.swift; sourceTree = "<group>"; };
 		77932FD129C9C53D00F1A102 /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
 		77932FD329C9C74000F1A102 /* Hello2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello2VC.swift; sourceTree = "<group>"; };
 		77932FD529C9D4E900F1A102 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
@@ -60,7 +63,7 @@
 		77BACDE32981432300AA63F5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		77BACDE52981440400AA63F5 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		77BACDE7298145F700AA63F5 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
-		77BACE002987ECDD00AA63F5 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		77BACE002987ECDD00AA63F5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		77BACE042989188200AA63F5 /* WeekDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,12 +72,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7782D29429D2CEC0001EE5C1 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7782D29529D2D3D2001EE5C1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7782D29629D2D3FE001EE5C1 /* WeatherAPIServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		77BACD95297FD50D00AA63F5 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +107,7 @@
 		77BACDA0297FD50D00AA63F5 /* WeatherWeather */ = {
 			isa = PBXGroup;
 			children = (
+				7782D29529D2D3D2001EE5C1 /* Services */,
 				77BACDA1297FD50D00AA63F5 /* AppDelegate.swift */,
 				77BACDA3297FD50D00AA63F5 /* SceneDelegate.swift */,
 				77BACE042989188200AA63F5 /* WeekDayPicker.swift */,
@@ -102,7 +115,7 @@
 				77BACDA5297FD50D00AA63F5 /* LoginViewController.swift */,
 				77BACDA7297FD50D00AA63F5 /* Main.storyboard */,
 				7765570F29BB53560011B080 /* WeatherLayout.swift */,
-				77BACE002987ECDD00AA63F5 /* TestView.swift */,
+				77BACE002987ECDD00AA63F5 /* TestViewController.swift */,
 				77BACDE7298145F700AA63F5 /* WeatherCell.swift */,
 				77BACDE32981432300AA63F5 /* WeatherViewController.swift */,
 				77BACDE52981440400AA63F5 /* WeatherData.swift */,
@@ -140,6 +153,9 @@
 			dependencies = (
 			);
 			name = WeatherWeather;
+			packageProductDependencies = (
+				7782D29329D2CEC0001EE5C1 /* Alamofire */,
+			);
 			productName = WeatherWeather;
 			productReference = 77BACD9E297FD50D00AA63F5 /* WeatherWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -168,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 77BACD95297FD50D00AA63F5;
+			packageReferences = (
+				7782D29229D2CEC0001EE5C1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 77BACD9F297FD50D00AA63F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -203,10 +222,11 @@
 				77548828298BCD9D0043805A /* LikeControl.swift in Sources */,
 				77BACE052989188200AA63F5 /* WeekDayPicker.swift in Sources */,
 				7765570A29B9E35F0011B080 /* GradientView.swift in Sources */,
-				77BACE012987ECDD00AA63F5 /* TestView.swift in Sources */,
+				77BACE012987ECDD00AA63F5 /* TestViewController.swift in Sources */,
 				77932FD629C9D4E900F1A102 /* CustomSegue.swift in Sources */,
 				77BACDE8298145F700AA63F5 /* WeatherCell.swift in Sources */,
 				7765570C29BB3ECD0011B080 /* SectionHeaderView.swift in Sources */,
+				7782D29729D2D3FE001EE5C1 /* WeatherAPIServices.swift in Sources */,
 				77BACDA4297FD50D00AA63F5 /* SceneDelegate.swift in Sources */,
 				77BACDE0298121A400AA63F5 /* CitiesViewController.swift in Sources */,
 				77932FD429C9C74000F1A102 /* Hello2VC.swift in Sources */,
@@ -432,6 +452,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7782D29229D2CEC0001EE5C1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7782D29329D2CEC0001EE5C1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7782D29229D2CEC0001EE5C1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 77BACD96297FD50D00AA63F5 /* Project object */;
 }
