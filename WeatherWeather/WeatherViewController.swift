@@ -21,6 +21,7 @@ final class WeatherViewController: UIViewController {
     
     var iconImage: UIImage?
     var name: String?
+    lazy var service = WeatherAPIServices()
     
     var weather = [
         WeatherData(temperature: 30, humidity: 0.2),
@@ -39,6 +40,8 @@ final class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        service.getWeather(city: name ?? "")
         
         collectionView.dataSource = self
         collectionView.delegate = self
