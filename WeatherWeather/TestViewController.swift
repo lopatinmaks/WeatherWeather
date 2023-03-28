@@ -14,12 +14,7 @@ final class TestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //activityIndicator.stopAnimating()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: DispatchWorkItem){
-//            self.getWeatherWithURLSessionComponents()
-//        }
-        //getWeatherWithURLSessionComponents(city: "London")
+   
         getWeatherWithAlamofire()
     }
     
@@ -61,7 +56,6 @@ final class TestViewController: UIViewController {
                 let json = try? JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
             }
-            
         }
         task.resume()
     }
